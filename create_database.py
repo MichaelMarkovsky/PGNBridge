@@ -3,6 +3,8 @@
 
 import requests
 import json
+import sqlite3
+
 
 
 username = "TimeDragonGod" # could be automated
@@ -45,9 +47,33 @@ for month in archives_list:
             games.append((url, pgn)) # add each game to the list
 
 
-print(games)
+#print(games)
 print(len(games))
 
 
 #==================================Create Data-base=======================
-# create the database if it does not exist
+
+conn = sqlite3.connect(f'{username}.db')  # Creates a new database file if it doesn’t exist
+cursor = conn.cursor()
+
+create_table = """
+    CREATE TABLE IF NOT EXISTS games (
+        link TEXT PRIMARY KEY,
+        pgn TEXT
+    );
+"""
+
+cursor.execute(create_table)
+
+#Insert the data into the database:
+insert_game = """
+    INSERT OR IGNORE INTO games (link, pgn)
+    VALUES (?, ?);
+"""
+
+cursor.executemany(insert_game, games)  # games = list of (link, pgn)
+conn.commit()  # one commit at the end
+
+cursor.close()
+conn.close()
+
