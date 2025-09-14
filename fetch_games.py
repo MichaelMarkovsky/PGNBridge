@@ -10,7 +10,6 @@ from datetime import date
 from urllib.parse import urlparse
 
 username = "TimeDragonGod" # could be automated
-game_id = "" # WILL be automated
 
 
 # User-Agent
