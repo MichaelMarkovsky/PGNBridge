@@ -1,28 +1,34 @@
 console.log("button.js loaded");
 
-// keep checking until the target button exists
+// wait for the small green review button (with the extra class) INSIDE its wrapper
 const interval = setInterval(() => {
   const target = document.querySelector(
-    ".cc-button-component.cc-button-primary.cc-button-xx-large.cc-bg-primary.cc-button-full"
+    ".quick-analysis-loader-component .cc-button-component.cc-button-primary.cc-button-xx-large.cc-bg-primary.cc-button-full.quick-analysis-loader-background"
   );
+  if (!target) return;
 
-  if (target) {
-    clearInterval(interval);
-    console.log("Found target button:", target);
+  clearInterval(interval);
 
-    // avoid duplicates
-    if (document.getElementById("my-extra-btn")) return;
+  const wrapper = target.closest(".quick-analysis-loader-component");
+  if (!wrapper) return;
 
-    // make button
-    const myBtn = document.createElement("button");
-    myBtn.id = "my-extra-btn";
-    myBtn.textContent = "Free Review";
+  // avoid duplicates
+  if (document.getElementById("my-extra-btn")) return;
 
-    // what happens when clicked
-    myBtn.onclick = () => alert("My button clicked!");
+  // create a sibling wrapper like the original, then our button inside it
+  const myWrap = document.createElement("div");
+  myWrap.className = "quick-analysis-loader-component";
 
-    // put it after the original button
-    target.after(myBtn);
-    console.log("Extra button added");
-  }
-}, 500);Z
+  const myBtn = document.createElement("button");
+  myBtn.id = "my-extra-btn";
+  myBtn.textContent = "Free Review";
+
+  myBtn.onclick = () => alert("I was clicked");
+
+  myWrap.appendChild(myBtn);
+
+  // insert the whole block directly AFTER the original wrapper
+  wrapper.insertAdjacentElement("afterend", myWrap);
+
+  console.log("Extra button block inserted right under the small green button");
+}, 500);
