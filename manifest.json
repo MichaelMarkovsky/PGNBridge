@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "Free Chess Analysis",
   "version": "1.0",
-
-
+  
   "content_scripts": [
     {
       "matches": ["https://www.chess.com/*"],
+      "css": ["button.css"],
       "js": ["button.js"]
     }
   ]

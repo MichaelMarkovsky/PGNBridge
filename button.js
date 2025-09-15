@@ -16,7 +16,7 @@ const interval = setInterval(() => {
     // make button
     const myBtn = document.createElement("button");
     myBtn.id = "my-extra-btn";
-    myBtn.textContent = "My Extra Button";
+    myBtn.textContent = "Free Review";
 
     // what happens when clicked
     myBtn.onclick = () => alert("My button clicked!");
@@ -25,4 +25,4 @@ const interval = setInterval(() => {
     target.after(myBtn);
     console.log("Extra button added");
   }
-}, 500);
+}, 500);Z
