@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   column-gap: 0.8rem;
+  align-self: center;
 
   /* sizing */
   width: 100%;
