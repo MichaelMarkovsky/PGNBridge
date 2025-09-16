@@ -1,34 +1,26 @@
 console.log("button.js loaded");
 
-// wait for the small green review button (with the extra class) INSIDE its wrapper
+// check every 500ms until i find the review link
 const interval = setInterval(() => {
-  const target = document.querySelector(
-    ".quick-analysis-loader-component .cc-button-component.cc-button-primary.cc-button-xx-large.cc-bg-primary.cc-button-full.quick-analysis-loader-background"
-  );
-  if (!target) return;
-
-  clearInterval(interval);
-
-  const wrapper = target.closest(".quick-analysis-loader-component");
+  const wrapper = document.querySelector(".game-over-modal-buttons");
   if (!wrapper) return;
+
+  const reviewLink = wrapper.querySelector('a[href*="tab=review"]');
+  if (!reviewLink) return;
 
   // avoid duplicates
   if (document.getElementById("my-extra-btn")) return;
 
-  // create a sibling wrapper like the original, then our button inside it
-  const myWrap = document.createElement("div");
-  myWrap.className = "quick-analysis-loader-component";
+  clearInterval(interval);
 
+  // create button
   const myBtn = document.createElement("button");
   myBtn.id = "my-extra-btn";
   myBtn.textContent = "Free Review";
-
   myBtn.onclick = () => alert("I was clicked");
 
-  myWrap.appendChild(myBtn);
+  // insert right after the existing review link
+  reviewLink.insertAdjacentElement("afterend", myBtn);
 
-  // insert the whole block directly AFTER the original wrapper
-  wrapper.insertAdjacentElement("afterend", myWrap);
-
-  console.log("Extra button block inserted right under the small green button");
+  console.log("Extra button inserted right after the review link");
 }, 500);
