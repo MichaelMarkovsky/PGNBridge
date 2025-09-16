@@ -23,7 +23,7 @@ const interval = setInterval(() => {
     try {
       const resp = await browser.runtime.sendMessage({
         type: "RUN_FLASK",
-        arg: "hello-from-extension"
+        arg: reviewLink.href 
       });
 
       if (!resp || !resp.ok) {
