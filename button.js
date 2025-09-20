@@ -40,6 +40,13 @@ const interval = setInterval(() => {
     } finally {
       myBtn.disabled = false;
       myBtn.textContent = original;
+
+     // ask background to open the tab
+      browser.runtime.sendMessage({
+        type: "OPEN_TAB",
+        url: "https://wintrchess.com/analysis",
+        active: true
+      });
     }
   });
 

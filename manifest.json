@@ -6,7 +6,8 @@
   "permissions": [
     "https://www.chess.com/*",
     "http://127.0.0.1:5000/*",
-    "http://localhost:5000/*"
+    "http://localhost:5000/*",
+    "tabs"
   ],
 
   "background": { "scripts": ["bg.js"] },

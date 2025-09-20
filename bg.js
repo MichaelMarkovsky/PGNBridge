@@ -5,7 +5,6 @@ const API_KEY = "dev-secret";
 browser.runtime.onMessage.addListener(async (msg, sender) => {
   if (msg?.type !== "RUN_FLASK") return;
 
-  // if link wasn't provided, fall back to the tab URL
   const link = msg.link || sender?.tab?.url || "";
 
   try {
@@ -22,4 +21,13 @@ browser.runtime.onMessage.addListener(async (msg, sender) => {
   } catch (e) {
     return { ok: false, error: String(e) };
   }
+});
+
+// listener just for opening tabs (wont interfere)
+browser.runtime.onMessage.addListener((msg, sender) => {
+  if (msg?.type !== "OPEN_TAB") return;
+  return browser.tabs.create({
+    url: msg.url,
+    active: Boolean(msg.active)
+  });
 });
