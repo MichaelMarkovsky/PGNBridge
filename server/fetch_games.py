@@ -9,8 +9,18 @@ from pathlib import Path
 from datetime import date
 from urllib.parse import urlparse
 
-username = "TimeDragonGod" # could be automated
+# Base dir where username.txt lives
+BASE_DIR = Path(__file__).resolve().parent
 
+def read_username() -> str:
+    p = BASE_DIR / "username.txt"
+    name = (p.read_text(encoding="utf-8").splitlines() or [""])[0].strip()
+    if not name:
+        raise SystemExit("username.txt missing or empty")
+    return name
+
+# Use the username from file (no defaults)
+username = read_username()
 
 # User-Agent
 headers = {
