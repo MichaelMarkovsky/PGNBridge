@@ -7,18 +7,23 @@
     "https://www.chess.com/*",
     "http://127.0.0.1:5000/*",
     "http://localhost:5000/*",
+    "https://wintrchess.com/*",
     "tabs"
   ],
 
   "background": { "scripts": ["bg.js"] },
 
   "content_scripts": [
-    {
-      "matches": ["https://www.chess.com/*"],
-      "css": ["button.css"],
-      "js": ["button.js"],
-      "run_at": "document_idle",
-      "all_frames": true
-    }
-  ]
+  {
+    "matches": ["https://www.chess.com/*"],
+    "css": ["button.css"],
+    "js": ["button.js"],
+    "run_at": "document_idle"
+  },
+  {
+    "matches": ["https://wintrchess.com/analysis*"],
+    "js": ["inject.js"],
+    "run_at": "document_idle"
+  }
+]
 }
