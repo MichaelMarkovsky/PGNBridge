@@ -54,7 +54,7 @@
     myBtn.addEventListener("click", async () => {
       const original = myBtn.textContent;
       myBtn.disabled = true;
-      myBtn.textContent = "Starting..";
+      myBtn.textContent = "Starting";
 
       let serverStarted = false;
 
@@ -71,7 +71,7 @@
           return;
         }
 
-        myBtn.textContent = "Fetching..";
+        myBtn.textContent = "Fetching";
         const resp = await API.runtime.sendMessage({ type: "RUN_FLASK", arg: liveHref });
 
         if (!resp || !resp.ok) {
