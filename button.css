@@ -1,0 +1,33 @@
+#my-extra-btn {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+  align-self: center;
+
+  /* sizing */
+  width: 100%;
+  max-width: 270px; 
+  min-height: 60px;
+  padding: 4px 20px;
+  border-radius: 8px;
+  font-size: 17px;           
+  font-weight: 800;
+  line-height: 1.1428;
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+
+  /* colors */
+  background-color: #4ac38b;    
+  color: #ffffff;
+
+  /* borders & effects */
+  border: 0;
+  text-shadow: 0 .1rem 0 rgba(0,0,0,0.2);
+  box-shadow:
+    0 0 .8rem transparent,
+    0 0 1.6rem transparent,
+    inset 0 -.8rem 2.4rem transparent,
+    inset 0 -0.4rem 0 0 #2c7c47;   
+}
