@@ -1,5 +1,4 @@
 # chess-free-analysis
-# free-chess-analysis
 
 > A Firefox extension with a Python backend that adds a **Free Review** button to Chess.com, fetches your games via the Chess.com API into a local SQLite database, and with one click opens the selected game on `wintrchess.com/analysis` by automatically sending its PGN.
 <img width="1388" height="933" alt="Screenshot_20250922_163406" src="https://github.com/user-attachments/assets/08a7d50e-bf98-4f2d-8484-e226bb01109c" />
